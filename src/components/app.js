@@ -22,16 +22,20 @@ export default class App extends Component {
   }
 
   searchYoutube = (term) => {
+    console.log(term);
     YTsearch({key: API_KEY, term: term, maxResults: 5}, (videos) => {
       this.setState({videos: videos, selectedVideo: videos[0]})
     });
   }
 
+  selectVideo = (selectedVideo) => {
+    this.setState({selectedVideo})
+  }
 
   render() {
     return (
       <div>
-        <SearchBar search={(term) => this.searchYoutube(term)}/>
+        <SearchBar search={this.searchYoutube}/>
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList videos={this.state.videos} selectVideo={this.selectVideo}/>
       </div>

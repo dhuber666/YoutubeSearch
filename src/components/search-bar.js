@@ -20,6 +20,7 @@ export default class SearchBar extends React.Component {
 
     searchYT = (term) => {
         this.setState({term});
+
         this.props.search(term);
     }
 
